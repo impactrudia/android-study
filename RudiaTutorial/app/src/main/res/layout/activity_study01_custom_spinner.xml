@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".study01_spinner.Study01CustomSpinnerActivity">
+
+    <Spinner
+        android:id="@+id/spinner_basic"
+        style="@style/Widget.AppCompat.Spinner"
+        android:layout_width="@dimen/spinner_width"
+        android:layout_height="@dimen/spinner_height"
+        android:dropDownWidth="@dimen/spinner_width"
+        android:dropDownVerticalOffset="@dimen/spinner_height"
+        android:paddingRight="14dp"
+        android:popupBackground="@android:color/white"
+        android:popupElevation="3dp"
+        android:background="@drawable/study01_spinner_bg"
+        android:stateListAnimator="@drawable/study01_spinner_sla"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner_countries"
+        android:layout_width="@dimen/spinner_width"
+        android:layout_height="@dimen/spinner_height"
+        android:dropDownWidth="@dimen/spinner_width"
+        android:dropDownVerticalOffset="@dimen/spinner_height"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp" />
+
+</LinearLayout>

@@ -8,4 +8,5 @@
 
 ## 할 일 목록
 
-- [ ]  CustomAdapter 만들기
+- [x]  Spinner 만들기
+- [ ] Android Architecture Component - View Model + LiveData + DataBinding

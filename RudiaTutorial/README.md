@@ -9,4 +9,4 @@
 ## 할 일 목록
 
 - [x]  Spinner 만들기
-- [ ] Android Architecture Component - View Model + LiveData + DataBinding
+- [x]  ViewModel + Live Data + Data Binding

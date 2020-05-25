@@ -13,4 +13,16 @@
         android:layout_height="wrap_content"
         android:text="study01_spinner" />
 
+    <Button
+        android:id="@+id/btnStudy02MVVM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="study02_MVVM" />
+
+    <Button
+        android:id="@+id/btnStudy02VmShare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="study02_VM_Share" />
+
 </android.support.v7.widget.LinearLayoutCompat>

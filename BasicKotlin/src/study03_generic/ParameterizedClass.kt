@@ -1,4 +1,4 @@
-package study01_generic
+package study03_generic
 
 class ParameterizedClass<A>(private val value: A) {
     fun getValue(): A {

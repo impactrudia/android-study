@@ -1,4 +1,4 @@
-package study01_generic
+package study03_generic
 
 import org.junit.Assert.*
 import org.junit.Test

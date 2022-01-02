@@ -1,9 +1,10 @@
 package state;
 
-public class Light{
+public class Light {
+
     protected LightState lightState;
 
-    private  LightState offState = new LightState() {
+    private LightState offState = new LightState() {
         @Override
         public void on() {
             System.out.println("Light ON");
@@ -29,16 +30,19 @@ public class Light{
         }
     };
 
-    public void on(){
+    public void on() {
         lightState.on();
 
     }
-    public void off(){
+
+    public void off() {
         lightState.off();
     }
 }
 
 interface LightState {
+
     void on();
+
     void off();
 }

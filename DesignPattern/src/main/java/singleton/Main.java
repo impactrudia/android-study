@@ -10,7 +10,7 @@ public class Main {
         System.out.println(speaker1.getVolume());
         System.out.println(speaker2.getVolume());
 
-        speaker1.setVolume(11);// 동일한 인스턴스라는게 증명 되는 것, 하나만 변경했는데 두 개가 나옴, 확실하게 하려면 디버깅하면 좋다.
+        speaker1.setVolume(11);//동일한 인스턴스라는게 증명 되는 것, 하나만 변경했는데 두 개가 나옴, 확실하게 하려면 디버깅하면 좋다.
         //11, 11
         System.out.println(speaker1.getVolume());
         System.out.println(speaker2.getVolume());

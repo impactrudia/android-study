@@ -1,6 +1,6 @@
 package state;
 
-public class StateApplication {
+public class Main {
 
     public static void main(String[] args) {
         Light light = new Light();

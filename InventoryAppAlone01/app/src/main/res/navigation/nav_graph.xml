@@ -23,7 +23,7 @@
         android:id="@+id/itemListFragment"
         android:name="impactrudia.aop.inventoryappalone01.ItemListFragment"
         android:label="@string/app_name"
-        tools:layout="@layout/item_list_fragment">
+        tools:layout="@layout/item_list_item">
         <action
             android:id="@+id/action_itemListFragment_to_itemDetailFragment"
             app:destination="@id/itemDetailFragment" />

@@ -5,14 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import impactrudia.aop.inventoryappalone01.databinding.FragmentItemDetailBinding
+import impactrudia.aop.inventoryappalone01.databinding.FragmentItemListBinding
 
-class ItemDetailFragment : Fragment() {
+internal class ItemDetailFragment : Fragment() {
+
+    lateinit var binding: FragmentItemDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_item_detail, container, false)
+        binding = FragmentItemDetailBinding.inflate(layoutInflater)
+        return binding.root
     }
 }

@@ -41,26 +41,36 @@ internal class AddItemFragment : BaseFragment<FragmentAddItemBinding>() {
 
         binding.apply {
             saveAction.setOnClickListener {
-                if (args.itemId > 0) {
-                    viewModel.updateItem(
-                        args.itemId,
-                        itemName.text.toString(),
-                        itemPrice.text.toString(),
-                        itemCount.text.toString()
-                    )
-                    findNavController().navigateUp()
-                } else {
-                    viewModel.saveItem(
-                        itemName.text.toString(),
-                        itemPrice.text.toString(),
-                        itemCount.text.toString()
-                    )
-                    val actionId =
-                        AddItemFragmentDirections.actionAddItemFragmentToItemListFragment()
-                    findNavController().navigate(actionId)
+                if (isEntryValid()) {
+                    if (args.itemId > 0) {
+                        viewModel.updateItem(
+                            args.itemId,
+                            itemName.text.toString(),
+                            itemPrice.text.toString(),
+                            itemCount.text.toString()
+                        )
+                        findNavController().navigateUp()
+                    } else {
+                        viewModel.saveItem(
+                            itemName.text.toString(),
+                            itemPrice.text.toString(),
+                            itemCount.text.toString()
+                        )
+                        val actionId =
+                            AddItemFragmentDirections.actionAddItemFragmentToItemListFragment()
+                        findNavController().navigate(actionId)
+                    }
                 }
             }
         }
+    }
+
+    private fun isEntryValid(): Boolean {
+        return viewModel.isEntryValid(
+            binding.itemName.text.toString(),
+            binding.itemPrice.text.toString(),
+            binding.itemCount.text.toString()
+        )
     }
 
     override fun getViewBindig(): FragmentAddItemBinding =

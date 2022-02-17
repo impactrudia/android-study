@@ -41,6 +41,17 @@ class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
         updateItem(Item(itemId, itemName, itemPrice.toDouble(), itemCount.toInt()))
     }
 
+    fun isEntryValid(
+        itemName: String,
+        itemPrice: String,
+        itemCount: String
+    ): Boolean {
+        if (itemName.isBlank() || itemPrice.isBlank() || itemCount.isBlank()) {
+            return false
+        }
+        return true
+    }
+
     private fun updateItem(item: Item) {
         viewModelScope.launch {
             itemDao.update(item)

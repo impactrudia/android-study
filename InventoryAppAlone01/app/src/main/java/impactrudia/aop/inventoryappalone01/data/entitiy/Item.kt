@@ -5,10 +5,9 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Item(
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0,
     val name: String,
     val price: Double,
     var count: Int
-) {
-    @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
-}
+)

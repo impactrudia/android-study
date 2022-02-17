@@ -13,16 +13,16 @@ import impactrudia.aop.inventoryappalone01.databinding.FragmentItemDetailBinding
 import impactrudia.aop.inventoryappalone01.databinding.FragmentItemListBinding
 
 internal class ItemDetailFragment : Fragment() {
-
-    lateinit var binding: FragmentItemDetailBinding
+    private val args: ItemDetailFragmentArgs by navArgs()
     lateinit var item: Item
-    val args: ItemDetailFragmentArgs by navArgs()
 
     private val viewModel: InventoryViewModel by activityViewModels {
         InventoryViewModelFactory(
             (activity?.application as InventoryApplication).database.itemDao()
         )
     }
+
+    lateinit var binding: FragmentItemDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,22 +42,18 @@ internal class ItemDetailFragment : Fragment() {
                 itemName.text = item.name
                 itemCount.text = item.count.toString()
                 itemPrice.text = item.price.toString()
+                    sellItem.setOnClickListener {
+                        viewModel.countDown(item)
+                    }
+                    deleteItem.setOnClickListener {
+                        viewModel.deleteItem(item)
+                        findNavController().navigateUp()
+                    }
+                    editItem.setOnClickListener {
+                        val actionId = ItemDetailFragmentDirections.actionItemDetailFragmentToAddItemFragment("", args.itemId)
+                        findNavController().navigate(actionId)
+                    }
             }
         }
-
-        binding.apply {
-            sellItem.setOnClickListener {
-                viewModel.countDown(item)
-            }
-            deleteItem.setOnClickListener {
-                viewModel.deleteItem(item)
-                findNavController().navigateUp()
-            }
-            editItem.setOnClickListener {
-                val actionId = ItemDetailFragmentDirections.actionItemDetailFragmentToAddItemFragment("", args.itemId)
-                findNavController().navigate(actionId)
-            }
-        }
-
     }
 }

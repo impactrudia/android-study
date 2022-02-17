@@ -13,7 +13,7 @@ class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
         }
     }
 
-    fun getItem(id: Int): LiveData<Item>{
+    fun getItem(id: Int): LiveData<Item> {
         return itemDao.getItem(id).asLiveData()
     }
 
@@ -24,16 +24,13 @@ class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
     }
 
     fun countDown(item: Item) {
-        viewModelScope.launch {
-            if(item.count > 0){
-                item.copy(count = item.count-1)
-                itemDao.update(item)
-            }
+        if (item.count > 0) {
+            val newItem = item.copy(count = item.count - 1)
+            updateItem(newItem)
         }
-
     }
 
-    fun updateItem(item: Item) {
+    private fun updateItem(item: Item) {
         viewModelScope.launch {
             itemDao.update(item)
         }
@@ -43,6 +40,7 @@ class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
 }
 
 class InventoryViewModelFactory(private val itemDao: ItemDao) : ViewModelProvider.Factory {
+    //TODO Q
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(InventoryViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")

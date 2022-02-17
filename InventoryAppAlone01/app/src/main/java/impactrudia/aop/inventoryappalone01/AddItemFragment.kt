@@ -47,11 +47,11 @@ class AddItemFragment : Fragment() {
             saveAction.setOnClickListener {
                 if(args.itemId > 0){
                     item.id = args.itemId
-                    viewModel.updateItem(item.copy(
-                        itemName.text.toString(),
-                        itemPrice.text.toString().toDouble(),
-                        itemCount.text.toString().toInt()
-                    ))
+//                    viewModel.updateItem(item.copy(
+//                        itemName.text.toString(),
+//                        itemPrice.text.toString().toDouble(),
+//                        itemCount.text.toString().toInt()
+//                    ))
                     findNavController().navigateUp()
                 }else{
                     viewModel.saveItem(

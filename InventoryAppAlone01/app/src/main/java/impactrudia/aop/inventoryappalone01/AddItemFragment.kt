@@ -15,7 +15,6 @@ class AddItemFragment : Fragment() {
 
     lateinit var binding: FragmentAddItemBinding
     val args: ItemDetailFragmentArgs by navArgs()
-    lateinit var item: Item
 
     private val viewModel: InventoryViewModel by activityViewModels {
         InventoryViewModelFactory(
@@ -36,7 +35,6 @@ class AddItemFragment : Fragment() {
 
         viewModel.getItem(args.itemId).observe(viewLifecycleOwner) {
             binding.apply {
-                item = it
                 itemName.setText(it.name)
                 itemCount.setText(it.count.toString())
                 itemPrice.setText(it.price.toString())
@@ -45,24 +43,24 @@ class AddItemFragment : Fragment() {
 
         binding.apply {
             saveAction.setOnClickListener {
-                if(args.itemId > 0){
-                    item.id = args.itemId
-//                    viewModel.updateItem(item.copy(
-//                        itemName.text.toString(),
-//                        itemPrice.text.toString().toDouble(),
-//                        itemCount.text.toString().toInt()
-//                    ))
+                if (args.itemId > 0) {
+                    viewModel.updateItem(
+                        args.itemId,
+                        itemName.text.toString(),
+                        itemPrice.text.toString(),
+                        itemCount.text.toString()
+                    )
                     findNavController().navigateUp()
-                }else{
+                } else {
                     viewModel.saveItem(
                         itemName.text.toString(),
                         itemPrice.text.toString(),
                         itemCount.text.toString()
                     )
-                    val actionId = AddItemFragmentDirections.actionAddItemFragmentToItemListFragment()
+                    val actionId =
+                        AddItemFragmentDirections.actionAddItemFragmentToItemListFragment()
                     findNavController().navigate(actionId)
                 }
-
             }
         }
     }

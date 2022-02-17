@@ -30,6 +30,15 @@ class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
         }
     }
 
+    fun updateItem(
+        itemId: Int,
+        itemName: String,
+        itemPrice: String,
+        itemCount: String
+    ) {
+        updateItem(Item(itemId, itemName, itemPrice.toDouble(), itemCount.toInt()))
+    }
+
     private fun updateItem(item: Item) {
         viewModelScope.launch {
             itemDao.update(item)
@@ -40,7 +49,6 @@ class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
 }
 
 class InventoryViewModelFactory(private val itemDao: ItemDao) : ViewModelProvider.Factory {
-    //TODO Q
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(InventoryViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")

@@ -1,17 +1,14 @@
 package impactrudia.aop.inventoryappalone01
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import impactrudia.aop.inventoryappalone01.base.BaseFragment
 import impactrudia.aop.inventoryappalone01.databinding.FragmentItemListBinding
 
-internal class ItemListFragment : Fragment() {
+internal class ItemListFragment : BaseFragment<FragmentItemListBinding>() {
 
-    lateinit var binding: FragmentItemListBinding
     private val adapter = ItemAdapter {
         val action =
             ItemListFragmentDirections.actionItemListFragmentToItemDetailFragment(it.id)
@@ -24,21 +21,13 @@ internal class ItemListFragment : Fragment() {
         )
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentItemListBinding.inflate(layoutInflater)
-        return binding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.apply {
             recyclerView.adapter = adapter
             floatingActionButton.setOnClickListener {
-                val actionId = ItemListFragmentDirections.actionItemListFragmentToAddItemFragment("", -1)
+                val actionId =
+                    ItemListFragmentDirections.actionItemListFragmentToAddItemFragment("", -1)
                 findNavController().navigate(actionId)
             }
         }
@@ -49,4 +38,7 @@ internal class ItemListFragment : Fragment() {
             }
         }
     }
+
+    override fun getViewBindig(): FragmentItemListBinding =
+        FragmentItemListBinding.inflate(layoutInflater)
 }

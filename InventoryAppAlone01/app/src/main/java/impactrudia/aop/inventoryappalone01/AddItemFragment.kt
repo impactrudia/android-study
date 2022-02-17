@@ -4,15 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import impactrudia.aop.inventoryappalone01.base.BaseFragment
 import impactrudia.aop.inventoryappalone01.databinding.FragmentAddItemBinding
 
-class AddItemFragment : Fragment() {
+internal class AddItemFragment : BaseFragment<FragmentAddItemBinding>() {
 
-    lateinit var binding: FragmentAddItemBinding
     private val args: ItemDetailFragmentArgs by navArgs()
 
     private val viewModel: InventoryViewModel by activityViewModels {
@@ -63,4 +62,7 @@ class AddItemFragment : Fragment() {
             }
         }
     }
+
+    override fun getViewBindig(): FragmentAddItemBinding =
+        FragmentAddItemBinding.inflate(layoutInflater)
 }

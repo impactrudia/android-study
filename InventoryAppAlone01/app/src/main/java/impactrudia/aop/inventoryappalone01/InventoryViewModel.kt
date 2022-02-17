@@ -7,6 +7,8 @@ import kotlinx.coroutines.launch
 
 class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
 
+    val allItems: LiveData<List<Item>> = itemDao.getAll().asLiveData()
+
     fun saveItem(itemName: String, price: String, count: String) {
         viewModelScope.launch {
             itemDao.insert(Item(name = itemName, price = price.toDouble(), count = count.toInt()))
@@ -44,11 +46,10 @@ class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
             itemDao.update(item)
         }
     }
-
-    val allItems: LiveData<List<Item>> = itemDao.getAll().asLiveData()
 }
 
 class InventoryViewModelFactory(private val itemDao: ItemDao) : ViewModelProvider.Factory {
+
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(InventoryViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
@@ -56,5 +57,4 @@ class InventoryViewModelFactory(private val itemDao: ItemDao) : ViewModelProvide
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
-
 }

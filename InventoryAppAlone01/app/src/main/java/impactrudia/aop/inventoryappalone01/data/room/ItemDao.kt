@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ItemDao {
+
     @Query("SELECT * FROM Item")
     fun getAll(): Flow<List<Item>>
 

@@ -7,7 +7,8 @@ import androidx.room.RoomDatabase
 import impactrudia.aop.inventoryappalone01.data.entitiy.Item
 
 @Database(entities = [Item::class], version = 1, exportSchema = false)
-abstract class ItemRoomDatabase : RoomDatabase(){
+abstract class ItemRoomDatabase : RoomDatabase() {
+
     abstract fun itemDao(): ItemDao
 
     companion object {

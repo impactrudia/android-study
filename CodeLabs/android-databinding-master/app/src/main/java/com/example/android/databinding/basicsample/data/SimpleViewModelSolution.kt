@@ -27,7 +27,7 @@ import androidx.lifecycle.ViewModel
 class SimpleViewModelSolution : ViewModel() {
     private val _name = MutableLiveData("Ada")
     private val _lastName = MutableLiveData("Lovelace")
-    private val _likes =  MutableLiveData(0)
+    private val _likes = MutableLiveData(0)
 
     val name: LiveData<String> = _name
     val lastName: LiveData<String> = _lastName
@@ -44,5 +44,12 @@ class SimpleViewModelSolution : ViewModel() {
 
     fun onLike() {
         _likes.value = (_likes.value ?: 0) + 1
+    }
+
+    fun onUnLike() {
+        val likeCount = (_likes.value ?: 0) - 1
+        if (likeCount >= 0) {
+            _likes.value = likeCount
+        }
     }
 }

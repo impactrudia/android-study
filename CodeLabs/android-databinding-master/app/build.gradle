@@ -55,4 +55,6 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$runnerExtVersion"
     androidTestImplementation "androidx.test:rules:$androidXTestVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
 }

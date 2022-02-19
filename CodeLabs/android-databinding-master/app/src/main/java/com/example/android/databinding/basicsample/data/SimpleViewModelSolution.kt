@@ -20,6 +20,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import com.example.android.databinding.basicsample.model.User
 
 /**
  * A VM for [com.example.android.databinding.basicsample.ui.SolutionActivity].
@@ -28,10 +29,13 @@ class SimpleViewModelSolution : ViewModel() {
     private val _name = MutableLiveData("Ada")
     private val _lastName = MutableLiveData("Lovelace")
     private val _likes = MutableLiveData(0)
+    private val _users = MutableLiveData(listOf<User>())
 
     val name: LiveData<String> = _name
     val lastName: LiveData<String> = _lastName
     val likes: LiveData<Int> = _likes
+    val users: LiveData<List<User>> = _users
+
 
     // popularity is exposed as LiveData using a Transformation instead of a @Bindable property.
     val popularity: LiveData<Popularity> = Transformations.map(_likes) {

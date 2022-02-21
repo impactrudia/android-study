@@ -36,7 +36,6 @@ class SimpleViewModelSolution : ViewModel() {
     val likes: LiveData<Int> = _likes
     val users: LiveData<List<User>> = _users
 
-
     // popularity is exposed as LiveData using a Transformation instead of a @Bindable property.
     val popularity: LiveData<Popularity> = Transformations.map(_likes) {
         when {
@@ -44,6 +43,16 @@ class SimpleViewModelSolution : ViewModel() {
             it > 4 -> Popularity.POPULAR
             else -> Popularity.NORMAL
         }
+    }
+
+    fun setUsers(){
+        var list : MutableList<User> = mutableListOf<User>()
+        list.add(User(1, "Moon", "HyeYoung", 0))
+        _users.postValue(list)
+    }
+
+    fun updateUser(list: List<User>){
+        _users.postValue(list.toList())
     }
 
     fun onLike() {

@@ -20,6 +20,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.RecyclerView
 import com.example.android.databinding.basicsample.R
 import com.example.android.databinding.basicsample.data.SimpleViewModelSolution
 import com.example.android.databinding.basicsample.databinding.SolutionBinding
@@ -38,6 +39,7 @@ class SolutionActivity : AppCompatActivity() {
 
     private val adapter by lazy {
         UserAdapter({
+            viewModel.updateUser(it)
         }, {
         })
     }
@@ -52,11 +54,12 @@ class SolutionActivity : AppCompatActivity() {
 
         binding.apply {
             recyclerView.adapter = adapter
-            var list : MutableList<User> = mutableListOf<User>()
-            list.add(User(1, "Moon", "HyeYoung", 0))
-            list.add(User(2, "Moon", "HyeSun", 6))
-            list.add(User(3, "Moon", "HyeJeong", 0))
-            adapter.submitList(list)
+            recyclerView.setHasFixedSize(true)
+            viewModel.setUsers()
+        }
+
+        viewModel.users.observe(this@SolutionActivity) {
+            adapter.submitList(it.toMutableList())
         }
     }
 }

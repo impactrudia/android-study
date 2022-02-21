@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="item"
             type="com.example.android.databinding.basicsample.model.User" />
@@ -12,33 +11,33 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <!-- A simple binding between a TextView and a string observable in the ViewModel -->
         <TextView
             android:id="@+id/name"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="128dp"
             android:text="@{item.firstName}"
+            tools:text="asdfasdf"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/name_label" />
 
         <!-- A simple binding between a TextView and a string observable in the ViewModel -->
         <TextView
             android:id="@+id/lastname"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="128dp"
             android:text="@{item.lastName}"
+            tools:text="asdfasdf"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lastname_label" />
 
@@ -54,6 +53,7 @@
             android:contentDescription="@string/profile_avatar_cd"
             android:minWidth="48dp"
             android:minHeight="48dp"
+            app:popularityIcon="@{item.popularity}"
             app:layout_constraintBottom_toTopOf="@+id/likes_label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -70,6 +70,7 @@
             app:layout_constraintBottom_toTopOf="@+id/like_button"
             app:layout_constraintEnd_toEndOf="@+id/likes_label"
             app:layout_constraintHorizontal_bias="0.5"
+            app:changeNumberToText="@{item.likeCount}"
             app:layout_constraintStart_toStartOf="@+id/likes_label"
             app:layout_constraintTop_toBottomOf="@+id/likes_label" />
 
@@ -132,7 +133,7 @@
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:max="@{100}"
             app:layout_constraintEnd_toEndOf="@+id/likes"

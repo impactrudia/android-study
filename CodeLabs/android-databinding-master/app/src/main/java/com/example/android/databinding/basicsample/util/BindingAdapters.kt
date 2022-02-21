@@ -23,11 +23,13 @@ import android.os.Build
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.widget.ImageViewCompat
 import androidx.databinding.BindingAdapter
 import com.example.android.databinding.basicsample.R
 import com.example.android.databinding.basicsample.data.Popularity
+import org.w3c.dom.Text
 
 /**
  * A Binding Adapter that is called whenever the value of the attribute `app:popularityIcon`
@@ -75,6 +77,11 @@ fun setProgress(progressBar: ProgressBar, likes: Int, max: Int) {
 @BindingAdapter("app:hideIfZero")
 fun hideIfZero(view: View, number: Int) {
     view.visibility = if (number == 0) View.GONE else View.VISIBLE
+}
+
+@BindingAdapter("app:changeNumberToText")
+fun changeNumberToText(view: TextView, number: Int) {
+    view.text = number.toString()
 }
 
 private fun getAssociatedColor(popularity: Popularity, context: Context): Int {

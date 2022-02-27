@@ -88,3 +88,4 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 InventoryAppClone/.idea/*
+CodeLabs/android-databinding-master/.idea/*

@@ -91,3 +91,4 @@ lint/tmp/
 InventoryAppClone/.idea/*
 CodeLabs/android-databinding-master/.idea/*
 CodeLabs/RecyclerViewDiffUtilDataBinding-Starter/.idea/*
+*.jar

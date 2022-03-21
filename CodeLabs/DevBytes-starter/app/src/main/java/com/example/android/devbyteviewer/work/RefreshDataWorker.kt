@@ -3,7 +3,7 @@ package com.example.android.devbyteviewer.work
 import android.content.Context
 import androidx.work.*
 import com.example.android.devbyteviewer.database.getDatabase
-import com.example.android.devbyteviewer.repository.VideoRepository
+import com.example.android.devbyteviewer.repository.VideosRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import retrofit2.HttpException
@@ -16,7 +16,7 @@ class RefreshDataWorker(appContext: Context, params: WorkerParameters) :
 
     override suspend fun doWork(): Result {
         val database = getDatabase(applicationContext)
-        val repository = VideoRepository(database)
+        val repository = VideosRepository(database)
 
         try {
             repository.refreshVideos()

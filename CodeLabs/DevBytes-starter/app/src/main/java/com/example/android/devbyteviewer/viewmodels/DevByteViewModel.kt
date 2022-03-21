@@ -104,6 +104,7 @@ class DevByteViewModel(application: Application) : AndroidViewModel(application)
 
         } catch (networkError: IOException) {
             // Show a Toast error message and hide the progress bar.
+            delay(2000)
             _eventNetworkError.value = true
         }
     }

@@ -106,4 +106,9 @@ dependencies {
     // WorkManager dependency
     def work_version = "1.0.1"
     implementation "android.arch.work:work-runtime-ktx:$work_version"
+
+    // Room dependency
+    def room_version = "2.1.0-alpha06"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 }
